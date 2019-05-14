@@ -14,14 +14,22 @@ function fetchQuery(
   cacheConfig,
   uploadables
 ) {
+
+  const authToken = localStorage.getItem('jwt');
+
   return fetch(graphqlUrl, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/graphql'
+      'Content-Type': 'application/json',
+      'Authorization' : 'jwt '+authToken
     },
-    body: operation.text
+    body: JSON.stringify({
+      query: operation.text,
+      variables: variables,
+    })
   }).then(response => {
+
     return response.json();
   });
 }

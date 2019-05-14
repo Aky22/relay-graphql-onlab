@@ -14,11 +14,11 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    port: 3000,
+    port: 3300,
     hot: true,
     watchContentBase: true,
     proxy: {
-      "/graphql": "http://localhost:8080",
+      "/graphql": "http://localhost:3000",
     }
   },
   devtool: 'inline-source-map',
@@ -32,8 +32,23 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
-      }
-    ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: false, // default is false
+              sourceMap: true,
+              importLoaders: 1,
+              localIdentName: "[name]--[local]--[hash:base64:8]"
+            }
+          },
+          "postcss-loader"
+        ]
+      }]
   },
   plugins: [
     new WebpackShellPlugin({

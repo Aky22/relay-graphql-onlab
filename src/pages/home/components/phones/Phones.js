@@ -37,21 +37,10 @@ class Phones extends Component {
 
 const phonesContainer = createFragmentContainer(Phones, {
   viewer: graphql`
-    fragment Phones_viewer on User {
-      phones {
-        edges {
-          node {
-            _id
-            model
-            image
-          }
-        }
-      }
-      phoneById(phoneId: "5a8201a813cd737e41a608d1") {
-        image
-        _id
-        model
-      }
+    fragment Phones_viewer on Project {
+      name
+      description
+      projectId
     }
   `
 });

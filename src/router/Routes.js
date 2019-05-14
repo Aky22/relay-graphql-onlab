@@ -5,21 +5,17 @@ import { graphql } from 'react-relay';
 
 import Home from '../pages/home/Home';
 import AnotherPage from '../pages/anotherPage/AnotherPage';
-
-const query = graphql`
-  query RoutesQuery {
-    viewer {
-      ...Phones_viewer
-    }
-  }
-`;
+import Login from "../pages/login/Login";
 
 export default makeRouteConfig(
   <Route path="/">
-    <Route Component={Home} query={query} />
+    <Route Component={Login} />
+    <Route path="home">
+      <Route Component={Home}/>
+    </Route>
     
     <Route path="page-without-header-example">
-      <Route Component={AnotherPage} query={query} />
+      <Route Component={AnotherPage} />
     </Route>
   </Route>,
 )
