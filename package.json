@@ -33,7 +33,7 @@
     "found-relay": "next",
     "graphql-relay": "^0.5.2",
     "normalize.css": "^7.0.0",
-    "postcss": "^7.0.16",
+    "postcss": "^7.0.36",
     "postcss-calc": "^7.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.6.0",
